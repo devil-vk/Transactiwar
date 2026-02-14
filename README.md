@@ -50,5 +50,5 @@
 - Upload logic: `public/upload.php`
 - DB schema: `sql/schema.sql`
 
-
-docker compose exec db mysql -u root -proot_password transactiwar
+## command to access MYsql database
+docker compose exec db mysql -u transactiwar_user -pasdfghjkl

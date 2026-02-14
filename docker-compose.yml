@@ -11,7 +11,7 @@ services:
       DB_PORT: 3306
       DB_NAME: transactiwar
       DB_USER: transactiwar_user
-      DB_PASS: transactiwar_password
+      DB_PASS: asdfghjkl
       APP_ENV: development
       SESSION_COOKIE_SECURE: "0"
       SESSION_IDLE_TIMEOUT: 900
@@ -32,7 +32,7 @@ services:
       MYSQL_ROOT_PASSWORD: root_password
       MYSQL_DATABASE: transactiwar
       MYSQL_USER: transactiwar_user
-      MYSQL_PASSWORD: transactiwar_password
+      MYSQL_PASSWORD: asdfghjkl
     ports:
       - "3307:3306"
     volumes:
