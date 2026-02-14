@@ -1,0 +1,60 @@
+:root{
+  --bg:#0b1020;
+  --surface:#0f1724;
+  --muted:#94a3b8;
+  --text:#e6eef8;
+  --accent:#7c3aed; /* violet */
+  --accent-2:#06b6d4; /* teal */
+  --card-shadow: 0 8px 24px rgba(2,6,23,0.6);
+}
+
+body{
+  background: linear-gradient(180deg, var(--bg) 0%, #071024 100%);
+  color:var(--text);
+}
+
+.navbar.navbar-dark.bg-dark{
+  background: linear-gradient(90deg, rgba(10,12,20,0.95), rgba(13,16,28,0.95));
+}
+
+.card-soft{
+  background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  border:1px solid rgba(255,255,255,0.04);
+  border-radius:1rem;
+  box-shadow: var(--card-shadow);
+}
+
+.profile-avatar{ 
+  border: 2px solid rgba(255,255,255,0.06);
+  box-shadow: 0 6px 20px rgba(2,6,23,0.6);
+}
+
+input.form-control, textarea.form-control, .form-control:focus {
+  background: rgba(255,255,255,0.03);
+  border:1px solid rgba(255,255,255,0.06);
+  color:var(--text);
+}
+
+.btn-primary{
+  background: linear-gradient(90deg,var(--accent),var(--accent-2));
+  border:none;
+}
+
+.btn-outline-light{
+  color:var(--text);
+  border-color:rgba(255,255,255,0.08);
+}
+
+.table thead th{
+  color:var(--muted);
+  border-bottom:1px solid rgba(255,255,255,0.04);
+}
+
+.alert{
+  background: rgba(255,255,255,0.03);
+  border:1px solid rgba(255,255,255,0.04);
+  color:var(--text);
+}
+
+/* small helpers */
+.text-muted{ color:var(--muted) !important; }

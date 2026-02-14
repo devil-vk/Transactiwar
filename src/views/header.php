@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 $pageTitle = $pageTitle ?? 'TransactiWar';
 $messages = consume_flash_messages();
+$currentPage = basename($_SERVER['SCRIPT_NAME'] ?? '');
 ?>
 <!doctype html>
 <html lang="en">
@@ -13,6 +14,7 @@ $messages = consume_flash_messages();
     <title><?= e($pageTitle) ?></title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="/assets/app.css">
+    <link rel="stylesheet" href="/assets/dark.css">
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -24,11 +26,11 @@ $messages = consume_flash_messages();
         <div class="collapse navbar-collapse" id="mainNav">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <?php if (is_authenticated()): ?>
-                    <li class="nav-item"><a class="nav-link" href="/dashboard.php">Dashboard</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/users.php">Search Users</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/transfer.php">Transfer</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/history.php">History</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/profile.php">My Profile</a></li>
+                    <li class="nav-item"><a class="nav-link <?= $currentPage === 'dashboard.php' ? 'active' : '' ?>" href="/dashboard.php">Dashboard</a></li>
+                    <li class="nav-item"><a class="nav-link <?= $currentPage === 'users.php' ? 'active' : '' ?>" href="/users.php">Search Users</a></li>
+                    <li class="nav-item"><a class="nav-link <?= $currentPage === 'transfer.php' ? 'active' : '' ?>" href="/transfer.php">Transfer</a></li>
+                    <li class="nav-item"><a class="nav-link <?= $currentPage === 'history.php' ? 'active' : '' ?>" href="/history.php">History</a></li>
+                    <li class="nav-item"><a class="nav-link <?= $currentPage === 'profile.php' ? 'active' : '' ?>" href="/profile.php">My Profile</a></li>
                 <?php endif; ?>
             </ul>
             <div class="d-flex align-items-center gap-2 text-white">
