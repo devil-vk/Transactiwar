@@ -1,0 +1,49 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: transactiwar_app
+    ports:
+      - "8080:80"
+    environment:
+      DB_HOST: db
+      DB_PORT: 3306
+      DB_NAME: transactiwar
+      DB_USER: transactiwar_user
+      DB_PASS: transactiwar_password
+      APP_ENV: development
+      SESSION_COOKIE_SECURE: "0"
+      SESSION_IDLE_TIMEOUT: 900
+      SESSION_REGEN_INTERVAL: 300
+      UPLOAD_MAX_SIZE: 2097152
+    volumes:
+      - ./:/var/www/html
+    depends_on:
+      db:
+        condition: service_healthy
+
+  db:
+    image: mysql:8.4
+    container_name: transactiwar_db
+    restart: unless-stopped
+    command: --sql_mode=STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION
+    environment:
+      MYSQL_ROOT_PASSWORD: root_password
+      MYSQL_DATABASE: transactiwar
+      MYSQL_USER: transactiwar_user
+      MYSQL_PASSWORD: transactiwar_password
+    ports:
+      - "3307:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+      - ./sql/schema.sql:/docker-entrypoint-initdb.d/01-schema.sql:ro
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-proot_password"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 20s
+
+volumes:
+  db_data:
